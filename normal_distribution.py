@@ -704,15 +704,18 @@ standard_normal_distribution = {-3.49: 0.0002,
 
 def find_normal_probability(lower, upper, mean, stddev):
     upper_zscore = (upper - mean) / stddev
-    upper_zscore = round(upper_zscore, 5)
+    upper_zscore = round(upper_zscore, 2)
     left_of_upper_probability = standard_normal_distribution[upper_zscore]
 
     if lower is None:
         left_of_lower_probability = 0
     else:
         lower_zscore = (lower - mean) / stddev
-        lower_zscore = round(lower_zscore, 5)
+        lower_zscore = round(lower_zscore, 2)
         left_of_lower_probability = standard_normal_distribution[lower_zscore]
+
+    print(upper_zscore)
+    print(lower_zscore)
 
     return left_of_upper_probability - left_of_lower_probability
 
